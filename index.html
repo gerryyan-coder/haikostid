@@ -179,8 +179,6 @@
                 <div class="w-24 h-[1.5px] purple-gradient mx-auto mb-10"></div>
                 <p class="text-purple-50 font-light text-lg max-w-xl mx-auto leading-relaxed italic">Low cost high quality living</p>
                 
-                <!-- === TAGLINE: "home far from home" === -->
-                <p class="text-purple-200 text-sm md:text-base mt-5 tracking-wide font-medium">— home far from home —</p>
                 
                 <div class="flex flex-wrap justify-center gap-4 mt-12">
                     <a href="https://wa.me/6282249831706?text=Saya%20ingin%20booking%20kamar%20di%20hikostid" target="_blank" class="bg-white text-purple-800 hover:bg-purple-50 px-8 py-3 rounded-full font-bold text-sm shadow-lg">Booking Sekarang</a>
@@ -415,12 +413,10 @@
     <footer class="bg-slate-950 text-purple-300/50 py-20 text-center">
         <div class="container mx-auto px-10">
             <div class="flex items-center justify-center gap-3 mb-4">
-                <div class="brand-logo purple-gradient w-8 h-8 text-lg">H</div>
-                <h3 class="text-white text-xl font-extrabold tracking-[0.2em] uppercase">hi<span class="purple-text">kostid</span></h3>
+                <h3 class="text-white text-xl font-extrabold tracking-[0.2em] uppercase">home far from home</span></h3>
             </div>
             <div class="w-12 h-[1px] purple-gradient mx-auto mb-8"></div>
             <p class="text-[10px] tracking-[0.2em] font-light italic">Penyedia Hunian Eksklusif di Tangerang Selatan</p>
-            <p class="text-purple-300 text-sm mt-3 tracking-wide">— home far from home —</p>
             <p class="mt-6 text-[9px] opacity-50 uppercase tracking-widest">© 2026 hikostid. All Rights Reserved.</p>
         </div>
     </footer>
@@ -466,8 +462,10 @@
             if (aturanDiv) aturanDiv.innerHTML = `<p class="font-bold text-amber-700">Peraturan Khusus:</p>${data.aturanTeks}`;
             const priceDiv = document.getElementById(`price-${kosId}`);
             if (priceDiv) {
+                // Hanya menampilkan harga, tanpa teks tambahan untuk haikost1
                 priceDiv.innerHTML = `<p class="text-[10px] font-bold text-stone-400 uppercase mb-1">Mulai Dari</p><span class="text-2xl font-black">Rp ${data.harga.replace(/\./g, ',')}</span>`;
-                if (kosId === 'haikost1') priceDiv.innerHTML += `<p class="text-[8px] text-purple-400">*Harga sewa bulanan | Tersedia harian/mingguan</p>`;
+                // Hapus penambahan teks khusus untuk haikost1 (sesuai permintaan)
+                // Tidak menambahkan apapun untuk haikost1 lagi
             }
             const namaKos = { haikost1: "Haikost 1", haikost2: "Haikost 2", haikost3: "Haikost 3" };
             const tipeHuruf = tipe.toUpperCase();
