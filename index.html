@@ -131,6 +131,102 @@
             .brand-logo-img { width: 32px; height: 32px; }
             nav .text-2xl { font-size: 1.2rem; }
         }
+        /* Lightbox custom styles */
+        .glightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+        }
+        .glightbox-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .glightbox-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .glightbox-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.4);
+            transition: transform 0.2s;
+        }
+        .glightbox-prev, .glightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(6px);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            z-index: 1002;
+        }
+        .glightbox-prev { left: 20px; }
+        .glightbox-next { right: 20px; }
+        .glightbox-prev:hover, .glightbox-next:hover { background: rgba(255,255,255,0.4); transform: translateY(-50%) scale(1.05); }
+        .glightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1002;
+            transition: 0.2s;
+        }
+        .glightbox-close:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
+        .counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 14px;
+            color: white;
+            font-weight: 500;
+            z-index: 1002;
+            pointer-events: none;
+        }
+        @media (max-width: 640px) {
+            .glightbox-prev, .glightbox-next { width: 36px; height: 36px; font-size: 18px; }
+            .glightbox-close { width: 32px; height: 32px; top: 12px; right: 16px; }
+        }
     </style>
 </head>
 <body class="text-slate-900">
@@ -208,18 +304,18 @@
                     </div>
                     <div class="flex gap-3 mb-4"><a href="#" id="wa-tanya-haikost1" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-center py-2 rounded-lg text-xs font-bold transition"> Tanya Pemilik</a></div>
                     <!-- GALERI LENGKAP HAIKOST 1 -->
-                    <div class="mt-4 mb-6"><p class="text-[11px] font-bold text-purple-700 uppercase tracking-wide mb-2"> Galeri Foto (klik untuk memperbesar)</p>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Bangunan</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%201.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%201.jpeg" class="w-full h-24 object-cover rounded" alt="Bangunan 1"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%202.jpeg" class="w-full h-24 object-cover rounded" alt="Bangunan 2"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%204.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%204.jpeg" class="w-full h-24 object-cover rounded" alt="Bangunan 4"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%205.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%205.jpeg" class="w-full h-24 object-cover rounded" alt="Bangunan 5"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%206.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%206.jpeg" class="w-full h-24 object-cover rounded" alt="Bangunan 6"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%203.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%203.jpeg" class="w-full h-24 object-cover rounded" alt="Bangunan 3"></a></div></div>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%201.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%201.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar 1"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%202.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar 2"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%203.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%203.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar 3"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%204.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%204.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar 4"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%205.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%205.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar 5"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%206.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%206.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar 6"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%207.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%207.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar 7"></a></div></div>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar Mandi</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%20mandi%201.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%20mandi%201.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar mandi 1"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%20mandi%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%20mandi%202.jpeg" class="w-full h-24 object-cover rounded" alt="Kamar mandi 2"></a></div></div>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Fasilitas Bersama</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%201.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%201.jpeg" class="w-full h-24 object-cover rounded" alt="Fasilitas bersama 1"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%202.jpeg" class="w-full h-24 object-cover rounded" alt="Fasilitas bersama 2"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%203.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%203.jpeg" class="w-full h-24 object-cover rounded" alt="Fasilitas bersama 3"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%204.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%204.jpeg" class="w-full h-24 object-cover rounded" alt="Fasilitas bersama 4"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%205.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%205.jpeg" class="w-full h-24 object-cover rounded" alt="Fasilitas bersama 5"></a></div></div>
+                    <div class="gallery-container mt-4 mb-6" data-kos="haikost1"><p class="text-[11px] font-bold text-purple-700 uppercase tracking-wide mb-2"> Galeri Foto (klik untuk memperbesar)</p>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Bangunan</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%201.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%201.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Bangunan 1"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%202.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Bangunan 2"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%204.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%204.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Bangunan 4"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%205.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%205.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Bangunan 5"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%206.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%206.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Bangunan 6"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%203.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20bangunan%203.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Bangunan 3"></a></div></div>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%201.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%201.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar 1"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%202.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar 2"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%203.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%203.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar 3"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%204.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%204.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar 4"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%205.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%205.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar 5"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%206.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%206.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar 6"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%207.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%207.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar 7"></a></div></div>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar Mandi</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%20mandi%201.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%20mandi%201.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar mandi 1"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%20mandi%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20kamar%20mandi%202.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Kamar mandi 2"></a></div></div>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Fasilitas Bersama</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%201.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%201.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Fasilitas bersama 1"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%202.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Fasilitas bersama 2"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%203.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%203.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Fasilitas bersama 3"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%204.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%204.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Fasilitas bersama 4"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%205.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid/foto%20fasilitas%20bersama%205.jpeg" class="gallery-img w-full h-24 object-cover rounded" alt="Fasilitas bersama 5"></a></div></div>
                     </div>
                     <a href="https://maps.app.goo.gl/KLWww7PLGr9fRdii6" target="_blank" class="flex items-center justify-between border border-purple-100 p-5 rounded-2xl group-hover:border-purple-600 transition-all duration-500 bg-purple-50/30"><div class="flex items-center gap-4"><div class="w-12 h-12 flex items-center justify-center rounded-full purple-gradient text-white shadow-lg"><i class="fas fa-location-dot"></i></div><div><p class="text-[10px] font-bold tracking-widest uppercase text-slate-900">Lihat Lokasi</p><p class="text-[10px] font-medium text-stone-400 italic">Navigasi Google Maps</p></div></div><i class="fas fa-arrow-right text-purple-200 group-hover:text-purple-600"></i></a>
                     <div class="mt-8 text-center" id="price-haikost1"><p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Mulai Dari</p><span class="text-2xl font-black text-slate-900 tracking-tighter">Rp 1.450.000</span></div>
                 </div>
             </div>
 
-            <!-- ========== HAIKOST 2 (KONTEN ASLI LENGKAP) ========== -->
+            <!-- ========== HAIKOST 2 ========== -->
             <div class="luxury-shadow bg-white rounded-3xl overflow-hidden group border border-purple-50/50 property-card">
                 <div class="relative overflow-hidden h-[400px]"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/bangunan%202.jpeg?raw=true" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]" alt="Haikost 2 bangunan"></div>
                 <div class="p-6 sm:p-10">
@@ -235,10 +331,10 @@
                     <div class="mb-4"><p class="text-[11px] font-bold text-purple-700 uppercase tracking-wide mb-2">Fasilitas & Perlengkapan</p><div class="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] bg-gray-50 p-2 rounded-lg"><div class="space-y-1"><span class="flex items-center gap-1"><i class="fas fa-wifi text-purple-400 w-4"></i> WiFi</span><span class="flex items-center gap-1"><i class="fas fa-wind text-purple-400 w-4"></i> AC</span><span class="flex items-center gap-1"><i class="fas fa-bath text-purple-400 w-4"></i> Kamar Mandi Dalam</span><span class="flex items-center gap-1"><i class="fas fa-bed text-purple-400 w-4"></i> Kasur</span><span class="flex items-center gap-1"><i class="fas fa-chair text-purple-400 w-4"></i> Meja</span></div><div class="space-y-1"><span class="flex items-center gap-1"><i class="fas fa-tv text-purple-400 w-4"></i> TV</span><span class="flex items-center gap-1"><i class="fas fa-archive text-purple-400 w-4"></i> Lemari / Storage</span><span class="flex items-center gap-1"><i class="fas fa-window-maximize text-purple-400 w-4"></i> Jendela</span></div></div></div>
                     <div id="aturan-haikost2" class="bg-amber-50/40 rounded-xl p-3 mb-4 border border-amber-200 text-[10px] space-y-1"></div>
                     <div class="flex gap-3 mb-4"><a href="#" id="wa-tanya-haikost2" class="flex-1 bg-purple-600 text-white text-center py-2 rounded-lg text-xs font-bold"> Tanya Pemilik</a></div>
-                    <div class="mt-4 mb-6"><p class="text-[11px] font-bold text-purple-700 uppercase tracking-wide mb-2"> Galeri Foto (klik untuk memperbesar)</p>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Bangunan</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/bangunan%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/bangunan%201.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Bangunan Haikost 2"></a></div></div>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%209.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%209.jpeg" class="rounded w-full h-24 object-cover" alt="Kamar 9"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%2010.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%2010.jpeg" class="rounded w-full h-24 object-cover" alt="Kamar 10"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%208.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%208.jpeg" class="rounded w-full h-24 object-cover" alt="Kamar 8"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%207.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%207.jpeg" class="rounded w-full h-24 object-cover" alt="Kamar 7"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%206.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%206.jpeg" class="rounded w-full h-24 object-cover" alt="Kamar 6"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%205.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%205.jpeg" class="rounded w-full h-24 object-cover" alt="Kamar 5"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%202.jpeg" class="rounded w-full h-24 object-cover" alt="Kamar 2"></a></div></div>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar Mandi</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/kamar%20mandi%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/kamar%20mandi%201.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar mandi Haikost 2"></a></div></div>
+                    <div class="gallery-container mt-4 mb-6" data-kos="haikost2"><p class="text-[11px] font-bold text-purple-700 uppercase tracking-wide mb-2"> Galeri Foto (klik untuk memperbesar)</p>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Bangunan</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/bangunan%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/bangunan%201.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 2"></a></div></div>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar</p><div class="grid grid-cols-2 gap-2"><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%209.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%209.jpeg" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 9"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%2010.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%2010.jpeg" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 10"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%208.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%208.jpeg" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 8"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%207.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%207.jpeg" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 7"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%206.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%206.jpeg" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 6"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%205.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%205.jpeg" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 5"></a><a href="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%202.jpeg" target="_blank"><img loading="lazy" src="https://raw.githubusercontent.com/gerryyan-coder/foto-haikostid/main/foto%20haikostid%202/kamar%202.jpeg" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 2"></a></div></div>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar Mandi</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/kamar%20mandi%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%202/kamar%20mandi%201.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar mandi Haikost 2"></a></div></div>
                     </div>
                     <a href="https://maps.app.goo.gl/XsTEj4QJ17a1FpYG7" target="_blank" class="flex items-center justify-between border border-purple-100 p-5 rounded-2xl bg-purple-50/30"><div class="flex gap-4"><div class="w-12 h-12 rounded-full purple-gradient flex items-center justify-center"><i class="fas fa-location-dot text-white"></i></div><div><p class="text-[10px] font-bold uppercase">Lihat Lokasi</p><p class="text-[10px] italic">Navigasi Google Maps</p></div></div><i class="fas fa-arrow-right text-purple-200"></i></a>
                     <div class="mt-8 text-center" id="price-haikost2"><p class="text-[10px] font-bold text-stone-400 uppercase mb-1">Mulai Dari</p><span class="text-2xl font-black">Rp 1.550.000</span></div>
@@ -312,7 +408,7 @@
                                 </a>
                             </div>
                             <div class="mt-4 bg-amber-50/50 rounded-lg p-2 text-center border border-amber-200 flex flex-wrap items-center justify-center gap-2">
-                                <div class="flex items-center gap-2 text-xs font-semibold text-amber-700"><i class="fas fa-utensils text-amber-600"></i><span>Termasuk 1 x makan (pilih breakfast 07.00-08.00 atau dinner 19.00-20.00)</span></div>
+                                <div class="flex items-start gap-2 text-xs font-semibold text-amber-700"><i class="fas fa-utensils text-amber-600 mt-1"></i><span class="leading-relaxed">Termasuk 1 x makan (pilih breakfast 07.00-08.00 atau dinner 19.00-20.00)<br>Khusus sewa HARIAN</span></div>
                                 <span class="inline-block bg-amber-200 text-amber-800 text-[9px] font-bold px-2 py-0.5 rounded-full"> Coming Soon </span>
                             </div>
                         </div>
@@ -332,11 +428,11 @@
                         </div>
                     </div>
                     <div class="bg-white rounded-xl p-3 border border-purple-100 flex items-start gap-2 mb-4"><div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center"><i class="fas fa-mug-saucer text-purple-600 text-sm"></i></div><div class="flex-1"><div class="flex flex-wrap items-center justify-between gap-1"><p class="text-[10px] font-bold">Cafe Eksklusif Penghuni</p><span class="text-[8px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Coming Soon</span></div><p class="text-[9px] text-stone-600">Nikmati Waroeng Kenalan khusus penghuni hai kost.</p></div></div>
-                    <div class="mt-4 mb-6"><p class="text-[11px] font-bold text-purple-700 uppercase tracking-wide mb-2"> Galeri Foto (klik untuk memperbesar)</p>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Bangunan</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%201.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%202.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 2"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%203.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%203.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 3"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%204.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%204.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 4"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%205.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%205.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 5"></a></div></div>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%201.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%202.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar 2"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%203.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%203.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar 3"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%204.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%204.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar 4"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%205.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%205.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar 5"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%206.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%206.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar 6"></a></div></div>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar Mandi</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%20mandi%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%20mandi%201.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar mandi 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%20mandi%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%20mandi%202.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Kamar mandi 2"></a></div></div>
-                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Fasilitas Bersama</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/fasilitas%20bersama%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/fasilitas%20bersama%201.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Fasilitas bersama 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/fasilitas%20bersama%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/fasilitas%20bersama%202.jpeg?raw=true" class="rounded w-full h-24 object-cover" alt="Fasilitas bersama 2"></a></div></div>
+                    <div class="gallery-container mt-4 mb-6" data-kos="haikost3"><p class="text-[11px] font-bold text-purple-700 uppercase tracking-wide mb-2"> Galeri Foto (klik untuk memperbesar)</p>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Bangunan</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%201.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%202.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 2"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%203.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%203.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 3"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%204.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%204.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 4"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%205.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%205.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 5"></a></div></div>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%201.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%202.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 2"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%203.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%203.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 3"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%204.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%204.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 4"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%205.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%205.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 5"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%206.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%206.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 6"></a></div></div>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar Mandi</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%20mandi%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%20mandi%201.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar mandi 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%20mandi%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%20mandi%202.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar mandi 2"></a></div></div>
+                        <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Fasilitas Bersama</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/fasilitas%20bersama%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/fasilitas%20bersama%201.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Fasilitas bersama 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/fasilitas%20bersama%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/fasilitas%20bersama%202.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Fasilitas bersama 2"></a></div></div>
                     </div>
                     <a href="https://maps.app.goo.gl/fHR6MkSFb2WqaPA56" target="_blank" class="flex items-center justify-between border border-purple-100 p-3 rounded-2xl bg-purple-50/30"><div class="flex gap-2"><div class="w-8 h-8 rounded-full purple-gradient flex items-center justify-center"><i class="fas fa-location-dot text-white text-xs"></i></div><div><p class="text-[9px] font-bold uppercase">Lihat Lokasi</p><p class="text-[8px] italic">Navigasi Google Maps</p></div></div><i class="fas fa-arrow-right text-purple-200 text-xs"></i></a>
                     <div class="mt-8 text-center border-t pt-4" id="price-haikost3"><p class="text-[10px] font-bold text-stone-400 uppercase mb-1">Mulai Dari</p><span class="text-2xl font-black">Rp 2.500.000</span><p class="text-[8px] text-purple-400">*Harga sewa bulanan | Tersedia paket harian & mingguan</p></div>
@@ -345,7 +441,7 @@
         </div>
     </section>
 
-    <!-- ===== BOOKING FORM MINI DENGAN PILIHAN TIPE SEWA + INFORMASI MAKAN UNTUK HARIAN ===== -->
+    <!-- BOOKING FORM -->
     <section class="container mx-auto px-4 sm:px-10 pb-20 -mt-10">
         <div class="max-w-2xl mx-auto luxury-shadow bg-white rounded-3xl p-6 sm:p-8 border border-purple-50/50 transition-all duration-300">
             <div class="text-center mb-6">
@@ -372,24 +468,14 @@
                         <option value="haikost2">Haikost 2 (Pondok Ranji)</option>
                         <option value="haikost3">Haikost 3 (Bintaro)</option>
                     </select>
-                    
-                    <!-- KONTAINER PILIHAN TIPE SEWA KHUSUS HAIKOST 3 (INTERAKTIF) -->
                     <div id="sewaTypeContainer" class="mt-3 hidden">
                         <label class="block text-[11px] font-semibold text-purple-800 mb-1">Pilih Tipe Sewa (Khusus Haikost 3)</label>
                         <div class="flex flex-wrap gap-4">
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="radio" name="sewaTipe" value="bulanan" checked> <span>Bulanan</span>
-                            </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="radio" name="sewaTipe" value="harian"> <span>Harian</span>
-                            </label>
-                            <label class="flex items-center gap-2 text-sm cursor-pointer">
-                                <input type="radio" name="sewaTipe" value="mingguan"> <span>Mingguan</span>
-                            </label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="sewaTipe" value="bulanan" checked> <span>Bulanan</span></label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="sewaTipe" value="harian"> <span>Harian</span></label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="sewaTipe" value="mingguan"> <span>Mingguan</span></label>
                         </div>
-                        <div id="mealInfo" class="text-[9px] text-amber-600 font-semibold mt-1 hidden">
-                            <i class="fas fa-utensils mr-1"></i> *Termasuk 1x Makan (pilih Breakfast 07.00-08.00 atau Dinner 19.00-20.00) khusus sewa HARIAN
-                        </div>
+                        <div id="mealInfo" class="text-[9px] text-amber-600 font-semibold mt-1 hidden"><i class="fas fa-utensils mr-1"></i> *Termasuk 1x Makan (pilih Breakfast 07.00-08.00 atau Dinner 19.00-20.00) khusus sewa HARIAN</div>
                     </div>
                 </div>
                 <div>
@@ -401,25 +487,15 @@
                     <label class="block text-[11px] font-semibold text-purple-800 mb-1">Tanggal Rencana Masuk <span class="text-red-400">*</span></label>
                     <input type="date" id="bookingDate" required class="w-full border border-purple-100 rounded-xl px-4 py-2 text-sm bg-purple-50/20 focus:ring-2 focus:ring-purple-300">
                 </div>
-                
                 <div>
                     <label class="block text-[11px] font-semibold text-purple-800 mb-2">Tujuan Menghubungi <span class="text-red-400">*</span></label>
                     <div class="flex flex-wrap gap-4">
-                        <label class="flex items-center gap-2 text-sm cursor-pointer">
-                            <input type="radio" name="tujuan" value="booking" checked class="w-4 h-4 text-purple-600"> 
-                            <span>Booking Kamar</span>
-                        </label>
-                        <label class="flex items-center gap-2 text-sm cursor-pointer">
-                            <input type="radio" name="tujuan" value="cek_lokasi" class="w-4 h-4 text-purple-600"> 
-                            <span>Cek Lokasi (Survey)</span>
-                        </label>
+                        <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="tujuan" value="booking" checked class="w-4 h-4 text-purple-600"> <span>Booking Kamar</span></label>
+                        <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="radio" name="tujuan" value="cek_lokasi" class="w-4 h-4 text-purple-600"> <span>Cek Lokasi (Survey)</span></label>
                     </div>
                     <p class="text-[9px] text-stone-400 mt-1">Pilih "Cek Lokasi" jika ingin menanyakan alamat & jadwal survey</p>
                 </div>
-
-                <button type="submit" class="w-full purple-gradient text-white py-3 rounded-xl font-bold text-sm tracking-wider shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-lg"></i> Kirim via WhatsApp
-                </button>
+                <button type="submit" class="w-full purple-gradient text-white py-3 rounded-xl font-bold text-sm tracking-wider shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2"><i class="fab fa-whatsapp text-lg"></i> Kirim via WhatsApp</button>
             </form>
             <p class="text-[9px] text-center text-stone-400 mt-5">Dengan mengirim, Anda akan diarahkan ke WhatsApp <br> untuk melanjutkan percakapan booking.</p>
         </div>
@@ -437,6 +513,7 @@
     <a href="https://wa.me/6282249831706?text=Saya%20tertarik%20dengan%20kost%20di%20hikostid" target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i></a>
 
     <script>
+        // --- Kode original untuk detail tipe, harga, form dll tetap ada (di bawah akan ditambah lightbox) ---
         const kosData = {
             haikost1: {
                 A: { ukuran: "3 x 4 m²", deposit: "Rp 500.000", maksOrang: "Maksimal 2 orang", harga: "1.550.000", aturanTeks: " Maksimal 2 orang per kamar<br> Tidak untuk pasutri<br> Tidak boleh bawa anak<br> Deposit dikembalikan jika tanpa kerusakan" },
@@ -485,7 +562,7 @@
         cards.forEach(card => observer.observe(card));
         window.addEventListener('load', () => cards.forEach(card => { if (card.getBoundingClientRect().top < window.innerHeight - 100) card.classList.add('visible'); }));
 
-        // ========== SCRIPT MODIFIKASI FORMULIR: PILIHAN SEWA HARIAN/MINGGUAN & INFO MAKAN ==========
+        // Form booking existing
         (function() {
             const waOwner = { haikost1: "6282249831706", haikost2: "6282249831706", haikost3: "6282249831706" };
             const form = document.getElementById('miniBookingForm');
@@ -520,7 +597,7 @@
 
             if (kosSelect) {
                 kosSelect.addEventListener('change', toggleSewaOptions);
-                toggleSewaOptions(); // Initial call
+                toggleSewaOptions();
             }
             sewaTipeRadios.forEach(radio => {
                 radio.addEventListener('change', updateMealInfoVisibility);
@@ -538,16 +615,13 @@
                     const radioTujuan = document.querySelectorAll('input[name="tujuan"]');
                     for (let i = 0; i < radioTujuan.length; i++) if (radioTujuan[i].checked) { tujuan = radioTujuan[i].value; break; }
                     if (!name || !wa || !date) { alert('Mohon isi Nama, Nomor WhatsApp, dan Tanggal Masuk.'); return; }
-                    
                     let cleanWa = wa.replace(/\D/g, '');
                     if (cleanWa.startsWith('0')) cleanWa = '62' + cleanWa.substring(1);
                     if (!cleanWa.startsWith('62')) cleanWa = '62' + cleanWa;
-                    
                     let kosName = '';
                     if (kos === 'haikost1') kosName = 'Haikost 1 (Ciputat)';
                     else if (kos === 'haikost2') kosName = 'Haikost 2 (Pondok Ranji)';
                     else kosName = 'Haikost 3 (Bintaro)';
-                    
                     let message = '';
                     let sewaDetail = '';
                     if (kos === 'haikost3') {
@@ -563,7 +637,6 @@
                             }
                         }
                     }
-                    
                     if (tujuan === 'cek_lokasi') {
                         message = `Halo, saya ${name} ingin CEK LOKASI / SURVEY kost.%0A%0A Kost yang ingin dilihat: ${kosName}%0A Rencana survey / datang: ${date}%0A WA saya: ${wa}%0A%0AMohon info alamat lengkap & jadwal bisa survey. Terima kasih.`;
                     } else {
@@ -573,6 +646,99 @@
                     window.open(`https://wa.me/${waOwner[kos]}?text=${message}`, '_blank');
                 });
             }
+        })();
+
+        /* ========== LIGHTBOX DENGAN NAVIGASI KIRI/KANAN ========== */
+        (function() {
+            const lightboxHTML = `
+                <div id="globalLightbox" class="glightbox-overlay">
+                    <div class="glightbox-container">
+                        <button class="glightbox-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                        <img class="glightbox-img" alt="Lightbox">
+                        <button class="glightbox-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+                        <button class="glightbox-close" aria-label="Close"><i class="fas fa-times"></i></button>
+                        <div class="counter"></div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+            const overlay = document.getElementById('globalLightbox');
+            const lightboxImg = overlay.querySelector('.glightbox-img');
+            const prevBtn = overlay.querySelector('.glightbox-prev');
+            const nextBtn = overlay.querySelector('.glightbox-next');
+            const closeBtn = overlay.querySelector('.glightbox-close');
+            const counterSpan = overlay.querySelector('.counter');
+            let currentImages = [];
+            let currentIndex = 0;
+
+            function openLightbox(images, index) {
+                if (!images.length) return;
+                currentImages = images;
+                currentIndex = index;
+                updateLightboxImage();
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function updateLightboxImage() {
+                if (currentImages.length && currentImages[currentIndex]) {
+                    lightboxImg.src = currentImages[currentIndex];
+                    counterSpan.textContent = `${currentIndex+1} / ${currentImages.length}`;
+                }
+            }
+
+            function nextImage(e) {
+                e.stopPropagation();
+                if (currentImages.length) {
+                    currentIndex = (currentIndex + 1) % currentImages.length;
+                    updateLightboxImage();
+                }
+            }
+            function prevImage(e) {
+                e.stopPropagation();
+                if (currentImages.length) {
+                    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                    updateLightboxImage();
+                }
+            }
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                lightboxImg.src = '';
+                currentImages = [];
+            }
+
+            prevBtn.addEventListener('click', prevImage);
+            nextBtn.addEventListener('click', nextImage);
+            closeBtn.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+            document.addEventListener('keydown', (e) => {
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === 'ArrowLeft') prevImage(e);
+                else if (e.key === 'ArrowRight') nextImage(e);
+                else if (e.key === 'Escape') closeLightbox();
+            });
+
+            // Inisialisasi semua gambar di .gallery-container
+            document.querySelectorAll('.gallery-container').forEach(container => {
+                const imgElements = container.querySelectorAll('img.gallery-img');
+                if (!imgElements.length) return;
+                const imageUrls = Array.from(imgElements).map(img => img.getAttribute('src'));
+                imgElements.forEach((img, idx) => {
+                    const parentLink = img.closest('a');
+                    if (parentLink) {
+                        parentLink.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            openLightbox(imageUrls, idx);
+                        });
+                    } else {
+                        img.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            openLightbox(imageUrls, idx);
+                        });
+                    }
+                });
+            });
         })();
     </script>
 </body>
