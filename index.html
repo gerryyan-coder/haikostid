@@ -104,6 +104,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Poppins', sans-serif; background-color: #f8f7ff; }
+        html { scroll-behavior: smooth; }
         .luxury-heading { font-family: 'Montserrat', sans-serif; letter-spacing: -0.015em; }
         .luxury-shadow { box-shadow: 0 20px 50px rgba(76, 29, 149, 0.08); }
         .purple-gradient { background: linear-gradient(135deg, #6d28d9 0%, #a78bfa 50%, #4c1d95 100%); }
@@ -251,7 +252,8 @@
                 <div class="w-24 h-[1.5px] purple-gradient mx-auto mb-10"></div>
                 <p class="text-purple-50 font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed italic">Low cost high quality living</p>
                 <div class="flex flex-wrap justify-center gap-4 mt-12">
-                    <a href="https://wa.me/6282249831706?text=Saya%20ingin%20booking%20kamar%20di%20hai%20kost" target="_blank" class="bg-white text-purple-800 hover:bg-purple-50 px-6 sm:px-8 py-2 sm:py-3 rounded-full font-bold text-sm shadow-lg">Booking Sekarang</a>
+                    <!-- Tombol Booking Sekarang sekarang mengarah ke formulir booking di bawah -->
+                    <a href="#bookingFormSection" class="bg-white text-purple-800 hover:bg-purple-50 px-6 sm:px-8 py-2 sm:py-3 rounded-full font-bold text-sm shadow-lg transition-all duration-300">Booking Sekarang</a>
                     <a href="#properties" class="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 sm:px-8 py-2 sm:py-3 rounded-full font-bold text-sm">Cek Kamar Tersedia</a>
                 </div>
             </div>
@@ -428,6 +430,10 @@
                         </div>
                     </div>
                     <div class="bg-white rounded-xl p-3 border border-purple-100 flex items-start gap-2 mb-4"><div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center"><i class="fas fa-mug-saucer text-purple-600 text-sm"></i></div><div class="flex-1"><div class="flex flex-wrap items-center justify-between gap-1"><p class="text-[10px] font-bold">Cafe Eksklusif Penghuni</p><span class="text-[8px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">Coming Soon</span></div><p class="text-[9px] text-stone-600">Nikmati Waroeng Kenalan khusus penghuni hai kost.</p></div></div>
+
+                    <!-- ========== TOMBOL TANYA PEMILIK ========== -->
+                    <div class="flex gap-3 mb-4"><a href="#" id="wa-tanya-haikost3" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white text-center py-2 rounded-lg text-xs font-bold transition"> Tanya Pemilik</a></div>
+
                     <div class="gallery-container mt-4 mb-6" data-kos="haikost3"><p class="text-[11px] font-bold text-purple-700 uppercase tracking-wide mb-2"> Galeri Foto (klik untuk memperbesar)</p>
                         <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Bangunan</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%201.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%202.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 2"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%203.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%203.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 3"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%204.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%204.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 4"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%205.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/bangunan%205.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Bangunan Haikost 3 5"></a></div></div>
                         <div class="mb-3"><p class="text-[9px] font-semibold text-stone-500 mb-1"> Kamar</p><div class="grid grid-cols-2 gap-2"><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%201.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%201.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 1"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%202.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%202.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 2"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%203.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%203.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 3"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%204.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%204.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 4"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%205.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%205.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 5"></a><a href="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%206.jpeg?raw=true" target="_blank"><img loading="lazy" src="https://github.com/gerryyan-coder/foto-haikostid/blob/main/foto%20haikostid%203/kamar%206.jpeg?raw=true" class="gallery-img rounded w-full h-24 object-cover" alt="Kamar 6"></a></div></div>
@@ -441,8 +447,8 @@
         </div>
     </section>
 
-    <!-- BOOKING FORM -->
-    <section class="container mx-auto px-4 sm:px-10 pb-20 -mt-10">
+    <!-- BOOKING FORM - added id for navigation -->
+    <section id="bookingFormSection" class="container mx-auto px-4 sm:px-10 pb-20 -mt-10">
         <div class="max-w-2xl mx-auto luxury-shadow bg-white rounded-3xl p-6 sm:p-8 border border-purple-50/50 transition-all duration-300">
             <div class="text-center mb-6">
                 <span class="text-[10px] font-bold tracking-[0.3em] uppercase text-purple-300">Booking Cepat</span>
@@ -513,7 +519,7 @@
     <a href="https://wa.me/6282249831706?text=Saya%20tertarik%20dengan%20kost%20di%20hikostid" target="_blank" class="wa-float"><i class="fab fa-whatsapp"></i></a>
 
     <script>
-        // --- Kode original untuk detail tipe, harga, form dll tetap ada (di bawah akan ditambah lightbox) ---
+        // --- Semua script original tetap berjalan ---
         const kosData = {
             haikost1: {
                 A: { ukuran: "3 x 4 m²", deposit: "Rp 500.000", maksOrang: "Maksimal 2 orang", harga: "1.550.000", aturanTeks: " Maksimal 2 orang per kamar<br> Tidak untuk pasutri<br> Tidak boleh bawa anak<br> Deposit dikembalikan jika tanpa kerusakan" },
@@ -562,7 +568,7 @@
         cards.forEach(card => observer.observe(card));
         window.addEventListener('load', () => cards.forEach(card => { if (card.getBoundingClientRect().top < window.innerHeight - 100) card.classList.add('visible'); }));
 
-        // Form booking existing
+        // Form booking
         (function() {
             const waOwner = { haikost1: "6282249831706", haikost2: "6282249831706", haikost3: "6282249831706" };
             const form = document.getElementById('miniBookingForm');
@@ -648,7 +654,7 @@
             }
         })();
 
-        /* ========== LIGHTBOX DENGAN NAVIGASI KIRI/KANAN ========== */
+        // Lightbox script (sama seperti asli)
         (function() {
             const lightboxHTML = `
                 <div id="globalLightbox" class="glightbox-overlay">
@@ -719,7 +725,6 @@
                 else if (e.key === 'Escape') closeLightbox();
             });
 
-            // Inisialisasi semua gambar di .gallery-container
             document.querySelectorAll('.gallery-container').forEach(container => {
                 const imgElements = container.querySelectorAll('img.gallery-img');
                 if (!imgElements.length) return;
